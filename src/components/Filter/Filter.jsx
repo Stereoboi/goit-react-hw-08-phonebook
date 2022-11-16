@@ -1,14 +1,14 @@
 import { Input, Label } from "./Filter.styled"
-import { useDispatch } from "react-redux";
-import { filterContact } from "redux/filterSlice";
+// import { useDispatch } from "react-redux";
+// import { filterContact } from "redux/filterSlice";
 
 export const Filter = () => {
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleChange = e => {
 
-    dispatch(filterContact(e.target.value));
+    // dispatch(filterContact(e.target.value));
   };
     
   return (
@@ -23,5 +23,3 @@ export const Filter = () => {
   )
 
 } 
-
-  

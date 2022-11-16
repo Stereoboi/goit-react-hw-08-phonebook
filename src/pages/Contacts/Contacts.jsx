@@ -1,29 +1,31 @@
-import { Label, Input, Button, FormWrapper } from "./Form.styled";
+import { Label, Input, Button, FormWrapper } from "./Contacts.styled.js";
 import { Formik, ErrorMessage } from 'formik'
 import * as yup from 'yup'
-import { useDispatch, useSelector } from "react-redux";
-import { addContact } from "redux/operations";
-import { selectContacts} from "redux/selectors";
-export const FormContact = () => {
+import { Filter } from "components/Filter/Filter";
+// import { useDispatch, useSelector } from "react-redux";
+// import { addContact } from "redux/operations";
+// import { selectContacts} from "redux/selectors";
+
+export const Contacts = () => {
 
   const initialValues = {
     name: '',
     phone: '',
   }
 
-  const contacts = useSelector(selectContacts);
+  // const contacts = useSelector(selectContacts);
   
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
-  const handleSubmit = (values, { resetForm }) => {
-  if (contacts.some(el => el.name.toLowerCase() === values.name.toLowerCase())) {
-    alert("this contact are alredy in your phonebook")
-    return
-  }
-    dispatch(addContact(values))
-    resetForm();
-  }
+  // const handleSubmit = (values, { resetForm }) => {
+  // if (contacts.some(el => el.name.toLowerCase() === values.name.toLowerCase())) {
+  //   alert("this contact are alredy in your phonebook")
+  //   return
+  // }
+  //   dispatch(addContact(values))
+  //   resetForm();
+  // }
   
   const schema = yup.object().shape({
     name: yup.string().required(),
@@ -31,9 +33,10 @@ export const FormContact = () => {
   })
  
     return (
-      <Formik
+      <div>
+        <Formik
         initialValues={initialValues}
-        onSubmit={handleSubmit}
+        // onSubmit={handleSubmit}
         validationSchema={schema}
       >
         <FormWrapper  >
@@ -57,8 +60,7 @@ export const FormContact = () => {
             <Button type='submit'>Add contact</Button>
           </FormWrapper>
         </Formik>
+        <Filter/>
+      </div>
     )
   }
-
-
-

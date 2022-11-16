@@ -50,6 +50,3 @@ import { fetchContacts, addContact, deleteContact } from "./operations";
 })
 
 export const contactsReducer = contactsSlice.reducer;
-
-  
-
