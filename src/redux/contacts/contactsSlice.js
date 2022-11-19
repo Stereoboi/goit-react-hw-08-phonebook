@@ -50,7 +50,6 @@ import { fetchContacts, addContact, deleteContact, updateContact } from "./opera
     },
     
     [deleteContact.fulfilled](state, action) {
-      console.log(action.payload);
       state.isLoading = false;
       state.error = null;
       const index = state.userContacts.findIndex(

@@ -16,6 +16,7 @@ import { selectContacts } from 'redux/contacts/selectors';
 import * as yup from 'yup'
 import { ContactList } from 'components/ContactList/ContactList';
 import  Filter  from 'components/Filter/Filter';
+import { Notification, Toast } from 'components/Notification/Notification';
 
 export default function AddContactForm() {
 
@@ -40,7 +41,7 @@ export default function AddContactForm() {
      validationSchema: schema,
      onSubmit: (values, { resetForm }) => {
        if (contacts.some(el => el.name.toLowerCase() === values.name.toLowerCase())) {
-        alert("this contact are alredy in your phonebook")
+        Notification();
         return
       }
       dispatch(addContact(values))
@@ -105,6 +106,7 @@ export default function AddContactForm() {
           </Box>
             <Filter/>
             <ContactList/>
+            <Toast/>
         </Box>
       </Container>
   );
