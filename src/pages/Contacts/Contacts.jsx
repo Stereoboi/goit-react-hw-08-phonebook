@@ -1,66 +1,15 @@
-import { Label, Input, Button, FormWrapper } from "./Contacts.styled.js";
-import { Formik, ErrorMessage } from 'formik'
-import * as yup from 'yup'
-import { Filter } from "components/Filter/Filter";
-// import { useDispatch, useSelector } from "react-redux";
-// import { addContact } from "redux/operations";
-// import { selectContacts} from "redux/selectors";
+import EditContactForm from 'components/EditContactForm/EditContactForm';
+import AddContactForm from 'components/AddContactForm/AddContactForm';
+import { useSelector } from 'react-redux';
+import { selectEditing } from 'redux/contacts/selectors';
 
-export const Contacts = () => {
+export default function Contacts() {
 
-  const initialValues = {
-    name: '',
-    phone: '',
-  }
+  const editing = useSelector(selectEditing);
 
-  // const contacts = useSelector(selectContacts);
-  
-
-  // const dispatch = useDispatch();
-  
-  // const handleSubmit = (values, { resetForm }) => {
-  // if (contacts.some(el => el.name.toLowerCase() === values.name.toLowerCase())) {
-  //   alert("this contact are alredy in your phonebook")
-  //   return
-  // }
-  //   dispatch(addContact(values))
-  //   resetForm();
-  // }
-  
-  const schema = yup.object().shape({
-    name: yup.string().required(),
-    phone: yup.string().min(6).required(),
-  })
- 
-    return (
-      <div>
-        <Formik
-        initialValues={initialValues}
-        // onSubmit={handleSubmit}
-        validationSchema={schema}
-      >
-        <FormWrapper  >
-            <Label>
-              Name
-                <Input
-                  type="text"
-                  name="name"
-                />
-                <ErrorMessage name="name" />
-                
-            </Label>
-            <Label>
-              Phone
-                <Input
-                  type="text"
-                  name="phone"
-                />
-                <ErrorMessage name="phone" />
-            </Label>
-            <Button type='submit'>Add contact</Button>
-          </FormWrapper>
-        </Formik>
-        <Filter/>
-      </div>
-    )
-  }
+  return (
+    <div>
+      {!editing ? (<AddContactForm/>) : (<EditContactForm/>)}
+    </div>
+  );
+}

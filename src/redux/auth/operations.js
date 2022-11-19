@@ -78,7 +78,7 @@ export const refreshUser = createAsyncThunk(
       // If there is no token, exit without performing any request
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    console.log("refreshing user");
+    
     try {
       // If there is a token, add it to the HTTP header and perform the request
       setAuthHeader(persistedToken);

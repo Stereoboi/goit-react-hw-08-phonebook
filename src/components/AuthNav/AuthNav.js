@@ -1,15 +1,20 @@
-import { Link } from "./Authnav.styled"
+import { Link, WrapperAuth, Navbar } from "./Authnav.styled"
 
 export const AuthNav = () => {
 
   return (
-    <div>
+    <Navbar>
+      <Link to='/'>
+        Home
+      </Link>
+      <WrapperAuth>
       <Link to="register">
         Register
       </Link>
       <Link to="login">
         Login
       </Link>
-    </div>
+      </WrapperAuth>
+    </Navbar>
   )
 }

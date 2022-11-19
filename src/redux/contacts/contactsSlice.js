@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchContacts, addContact, deleteContact } from "./operations";
+import { fetchContacts, addContact, deleteContact, updateContact } from "./operations";
 
     const handlePending = state => {
       state.isLoading = true;
@@ -9,13 +9,25 @@ import { fetchContacts, addContact, deleteContact } from "./operations";
       state.error = action.payload;
     };
 
-
     const contactsSlice = createSlice({
     name: "contacts",
     initialState:{
       userContacts: [],
       isLoading: false,
       error: null,
+      isEditing: false,
+      currentContact: {},
+    },
+    reducers: {
+      editContact(state, action) {
+        state.isEditing = action.payload; 
+      },
+      cancelEditContact(state, action) {
+        state.isEditing = action.payload; 
+      },
+      pickedContact(state, action) {
+        state.currentContact = state.userContacts.filter(contact => contact.id === action.payload)
+      },
     },
     extraReducers: {
     [fetchContacts.pending]:handlePending,
@@ -38,6 +50,7 @@ import { fetchContacts, addContact, deleteContact } from "./operations";
     },
     
     [deleteContact.fulfilled](state, action) {
+      console.log(action.payload);
       state.isLoading = false;
       state.error = null;
       const index = state.userContacts.findIndex(
@@ -46,7 +59,17 @@ import { fetchContacts, addContact, deleteContact } from "./operations";
       state.userContacts.splice(index, 1);
     },
     
+    [updateContact.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.userContacts = state.userContacts.map(contact =>
+        contact.id === action.payload.id ? action.payload : contact )
+    },
   }, 
 })
+
+export const {
+  editContact, cancelEditContact, pickedContact, implementChanges
+} = contactsSlice.actions;
 
 export const contactsReducer = contactsSlice.reducer;

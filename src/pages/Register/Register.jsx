@@ -1,9 +1,9 @@
-import { RegisterForm } from "components/RegisterForm/RegisterForm"
+// import { RegisterForm } from "components/RegisterForm/RegisterForm"
+import SignUp from "components/RegisterForm/RegisterForm"
 export const Register = () => {
   return (
     <div>
-      <h2>Registration</h2>
-      <RegisterForm />
+      <SignUp />
     </div>
   )
 }

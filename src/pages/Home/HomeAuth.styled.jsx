@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Title = styled.h1`
-  max-width: 300px;
+  width: 500px;
   display: block;
   margin-left: auto;
   margin-right: auto;

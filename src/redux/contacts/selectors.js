@@ -8,6 +8,10 @@ export const selectIsLoading = state => state.contacts.isLoading;
 
 export const selectError = state => state.contacts.error;
 
+export const selectEditing = state => state.contacts.isEditing;
+
+export const selectCurrentContact = state => state.contacts.currentContact;
+
 //  без мемоізації
 
 // export const selectVisibleContacts = state => {

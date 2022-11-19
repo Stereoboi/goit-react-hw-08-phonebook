@@ -1,25 +1,31 @@
-import { Input, Label } from "./Filter.styled"
-// import { useDispatch } from "react-redux";
-// import { filterContact } from "redux/filterSlice";
 
-export const Filter = () => {
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import { useDispatch } from "react-redux";
+import { filterContact } from "redux/contacts/filterSlice";
 
-  // const dispatch = useDispatch();
+
+export default function Filter() {
+  const dispatch = useDispatch();
 
   const handleChange = e => {
 
-    // dispatch(filterContact(e.target.value));
+  dispatch(filterContact(e.target.value));
   };
-    
   return (
-    <Label>
-    Find contact by name
-    <Input
-      type="text"
-      name="filter"
-      onChange={handleChange}
-    />
-    </Label>
-  )
-
-} 
+    <Box sx={{ '& > :not(style)': { m: 1 } }}>
+      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
+        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
+        <TextField
+          label="Search"
+          variant="standard" 
+          type="text"
+          name="filter"
+          onChange={handleChange}
+          />
+      </Box>
+    </Box>
+  );
+}
