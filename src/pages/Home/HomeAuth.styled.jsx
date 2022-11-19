@@ -9,8 +9,7 @@ export const HomeWrapper = styled.div`
   padding-top:80px;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 54px);
-  ${'' /* background-color: orange ; */}
+  height: 800px;
 `;
 
 export const Wrapper = styled.div`
