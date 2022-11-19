@@ -1,17 +1,19 @@
 import { Route, Routes } from "react-router-dom"
 import { Layout } from "components/Layout/Layout"
-import { Home } from '../../pages/Home/Home'
-import { HomeAuth } from "pages/Home/HomeAuth"
-import Contacts from '../../pages/Contacts/Contacts'
-import { Login} from '../../pages/Login/Login'
-import { Register} from '../../pages/Register/Register'
 import { useDispatch } from "react-redux"
 import { useAuth } from "hooks"
-import { useEffect } from "react"
+import { useEffect, lazy } from "react"
 import { refreshUser } from "redux/auth/operations"
 import { RestrictedRoute } from "components/RestrictedRoute"
 import { PrivateRoute } from "components/PrivateRoute"
 import LinearIndeterminate from "Loader/Loade"
+
+const Home = lazy(() => import('../../pages/Home/Home'))
+const HomeAuth = lazy(() => import('pages/Home/HomeAuth'))
+const Contacts = lazy(() => import('../../pages/Contacts/Contacts'))
+const Login = lazy(() => import('../../pages/Login/Login'))
+const Register = lazy(() => import('../../pages/Register/Register'))
+
 
 export const App = () => {
   const { isLoggedIn } = useAuth();

@@ -1,6 +1,6 @@
 import { HomeWrapper, Title, Text, StyledLink, Wrapper } from "./Home.styled";
 
-export const Home = () => {
+export default function Home() {
   
   return (
     <HomeWrapper>

@@ -57,7 +57,7 @@ function UserMenu() {
             variant="h6"
             noWrap
             component="a"
-            href="http://localhost:3000/goit-react-hw-08-phonebook/contacts"
+            href="https://stereoboi.github.io/goit-react-hw-08-phonebook"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -108,7 +108,7 @@ function UserMenu() {
             variant="h5"
             noWrap
             component="a"
-            href="http://localhost:3000/goit-react-hw-08-phonebook/contacts"
+            href="https://stereoboi.github.io/goit-react-hw-08-phonebook"
             sx={{
               mr: 2,
               display: { xs: 'flex', md: 'none' },

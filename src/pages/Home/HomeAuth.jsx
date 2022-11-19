@@ -1,7 +1,7 @@
 import { HomeWrapper, Title, Text, StyledLink, Wrapper } from "./HomeAuth.styled";
 import { useAuth } from "hooks";
 
-export const HomeAuth = () => {
+export default function HomeAuth ()  {
   const { user } = useAuth();
   
   return (
